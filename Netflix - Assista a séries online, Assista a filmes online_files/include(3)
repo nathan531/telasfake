@@ -1,0 +1,259 @@
+#price-tiers {
+    white-space: normal;
+    margin-bottom:50px;
+}
+
+#streamPlanForm .fixedClass {
+    position:fixed;
+    z-index:100;
+    top:0;
+    background-color:#f3f3f3;
+    width:100%;
+}
+
+#streamPlanForm .container {
+    font-size:16px;
+}
+
+#streamPlanForm .container {
+    display: table;
+    border-collapse:collapse;
+    width:100%;
+}
+#streamPlanForm .row {
+    display: table-row;
+    border-bottom: 1px solid #D4D6D8;
+}
+#streamPlanForm .container.first .row, #streamPlanForm .container.last .row {
+    border-bottom:none;
+}
+#streamPlanForm .column {
+    display: table-cell;
+    padding: 12px 15px;
+}
+#streamPlanForm .column label {
+    width:100%;
+    display:table;
+}
+#streamPlanForm .container.first .column {
+    padding: 10px 3px 3px 3px;
+}
+
+#streamPlanForm .column.first {
+    width:40%;
+    padding-left:0;
+}
+
+#streamPlanForm .column.tiers {
+    width:20%;
+    text-align: center;
+    color:#999;
+}
+
+#streamPlanForm .column.tiers.selTierColor {
+    color:#0F84FA;
+}
+
+#streamPlanForm .alt {
+    display:none;
+    text-align: center;
+    margin-top:10px;
+}
+#streamPlanForm .alt:first-child {
+    margin-top:0;
+}
+
+
+.flexbox #streamPlanForm,
+.flexboxlegacy #streamPlanForm{
+    display:inline;
+}
+
+#streamPlanForm input[type=radio]{
+    position: absolute;
+    left:-9999px;
+    outline: none;
+}
+
+#streamPlanForm  .hdlogo {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/HD_FFFFFF_78.png);
+    background-size: 100% 100%;
+    display: inline-block;
+    height: 16px;
+    width: 30px;
+    vertical-align: middle;
+    margin-left: 4px;
+    margin-top: -2px;
+}
+
+#streamPlanForm .square {
+    background-color:#82C7F4;
+    color:#fff;
+    display:block;
+    cursor: pointer;
+    /*padding: 15px;*/
+}
+
+#streamPlanForm .square.selected {
+    background-color:#0080FF;
+}
+
+#streamPlanForm .square .padding {
+    padding:10px;
+    display:table-cell;
+    vertical-align: middle;
+}
+
+.fi #streamPlanForm .square .padding {
+    padding:2px;
+}
+
+.de #streamPlanForm .square .padding {
+    word-break: break-all;
+}
+
+#streamPlanForm .num_screen {
+    color:#fff;
+}
+
+#streamPlanForm .selborder {
+    max-width: 90px;
+    margin: 0 auto;
+}
+
+
+#streamPlanForm .selborder.selected {
+    border:2px solid #0F84FA;
+    padding:3px;
+}
+
+#streamPlanForm .selarrow {
+    display:none;
+}
+
+#streamPlanForm .grid_num {
+    font-size:22px;
+    line-height: 26px;
+}
+
+#streamPlanForm .yescheck {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/Check_999999_40x40.png);
+    background-size: 100% 100%;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    vertical-align: middle;
+}
+
+#streamPlanForm .selTierColor .yescheck {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/Check_0080FF_40x40.png);
+    background-size: 100% 100%;
+}
+
+#streamPlanForm .nocross {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/Cross_999999_40x40.png);
+    background-size: 100% 100%;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    vertical-align: middle;
+}
+
+#streamPlanForm .selTierColor .nocross {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/Cross_0080FF_40x40.png);
+    background-size: 100% 100%;
+}
+
+#streamPlanForm .tier_num {
+    font-size:18px;
+}
+
+#streamPlanForm .container.first .column.tiers {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+@media only screen and (max-width : 600px) {
+    #price-tiers {
+        margin-top:20px;
+        margin-bottom:40px;
+    }
+    #streamPlanForm .column.tiers {
+        width: 33%;
+    }
+    #streamPlanForm .column, #streamPlanForm .column:last-child {
+        padding: 7px 15px;
+    }
+    #streamPlanForm .alt {
+        display:block;
+        font-size:14px;
+        color:#666;
+        margin-bottom:10px;
+        margin-top:15px;
+    }
+    #streamPlanForm .column.first {
+        display:none;
+    }
+    #streamPlanForm .row {
+        border-bottom:none;
+    }
+    #streamPlanForm .column:nth-child(3) {
+        border-left:1px solid #D4D6D8;
+        border-right:1px solid #D4D6D8;
+    }
+    #streamPlanForm .container.first .column.tiers {
+        border:none;
+    }
+
+    #streamPlanForm .grid_num {
+        font-size:18px;
+        line-height: normal;
+    }
+
+    #streamPlanForm .selarrow {
+        display:block;
+        visibility: hidden;
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 14px solid #0F84FA;
+        margin:0 auto;
+    }
+
+    #streamPlanForm .selborder.selected  + .selarrow {
+        visibility: visible;
+    }
+}
+
+@media only screen and (min-width : 950px) {
+
+    #streamPlanForm .selborder {
+        max-width: 120px;
+        margin: 0 auto;
+    }
+
+    #streamPlanForm .grid_num {
+        font-size: 26px;
+        line-height: 26px;
+    }
+
+    #streamPlanForm .square .padding {
+        padding:15px 10px;
+    }
+
+    #streamPlanForm .num_screen {
+        font-size:20px;
+    }
+
+    .fi #streamPlanForm .num_screen {
+        font-size:17px;
+    }
+
+
+    #streamPlanForm .hdlogo {
+        height: 20px;
+        width: 38px;
+    }
+
+}

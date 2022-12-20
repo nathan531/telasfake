@@ -1,0 +1,55 @@
+if (Modernizr.touch) {
+    var cvvClickTog;
+    $("#cvv_hover a").click(
+        function (evt) {
+
+            evt.preventDefault();
+
+            if ($("#cvv_hover article").is(':visible')) {
+
+                clearTimeout(cvvClickTog);
+                $("#cvv_hover article").toggle();
+                $('#cvv_hover .arrow-down').toggle();
+
+            } else {
+
+                if ($("#cvvlogo.AMEX").length > 0){
+                    $('#cvv_hover article').css("left", "-250px").css('top', '-164px');
+                } else {
+                    $('#cvv_hover article').css("left", "-110px").css('top', '-164px');
+                }
+                $('#cvv_hover .arrow-down').css("left", "-35px").css('top', '-48px');
+                $('#cvv_hover article').toggle();
+                $('#cvv_hover .arrow-down').toggle();
+
+                cvvClickTog = setTimeout(function() {
+                    $("#cvv_hover article").toggle();
+                    $('#cvv_hover .arrow-down').toggle();
+                },5000)
+            }
+        }
+    );
+
+} else {
+    $("#cvv_hover a").hover(
+        function () {
+            if ($("#cvvlogo.AMEX").length > 0){
+                $('#cvv_hover article').css("left", "-250px").css('top', '-164px');
+            } else {
+                $('#cvv_hover article').css("left", "-110px").css('top', '-164px');
+            }
+            $('#cvv_hover .arrow-down').css("left", "-35px").css('top', '-48px');
+            $('#cvv_hover article').toggle();
+            $('#cvv_hover .arrow-down').toggle();
+        },
+        function () {
+            $("#cvv_hover article").toggle();
+            $('#cvv_hover .arrow-down').toggle();
+        }
+    ).click(function (evt) {
+            evt.preventDefault()
+    });
+}
+
+
+

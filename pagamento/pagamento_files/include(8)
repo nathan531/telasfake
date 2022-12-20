@@ -1,0 +1,69 @@
+if (Modernizr.touch) {
+    var secureClickTog;
+    $("#secure .secure a.term-size").click(
+        function (evt) {
+
+            evt.preventDefault();
+
+            if ($(".secure #seriously").is(':visible')) {
+                clearTimeout(secureClickTog);
+                $('.secure #seriously').toggle();
+                $('.secure .arrow-right').toggle();
+            } else {
+                pos = $(this).offset();
+                width = $(this).width();
+                $('.secure #seriously').addClass('layer');
+
+                layerH = $("#seriously").height();
+                layerW = $("#seriously").width();
+                leftPos = pos.left - layerW - 85;
+                topPos = pos.top - (layerH / 2);
+
+                $('.secure #seriously').css("left", leftPos + "px").css("top", topPos +"px");
+                $('.secure .arrow-right').css('left', (leftPos + layerW + 31) + 'px').css('top', (topPos + 34) + 'px');
+
+                $('.secure #seriously').toggle();
+                $('.secure .arrow-right').toggle();
+
+                netflix.utils.beacon('tmmh=shown');
+
+                secureClickTog = setTimeout(function() {
+                    $('.secure #seriously').toggle();
+                    $('.secure .arrow-right').toggle();
+                },5000)
+            }
+
+        }
+    );
+
+} else {
+    $("#secure .secure a.term-size").hover(
+        function () {
+            pos = $(this).offset();
+            width = $(this).width();
+
+            $('.secure #seriously').addClass('layer');
+
+            layerH = $("#seriously").height();
+            layerW = $("#seriously").width();
+            leftPos = pos.left - layerW - 85;
+            topPos = pos.top - (layerH / 2);
+
+            $('.secure #seriously').css("left", leftPos + "px").css("top", topPos +"px");
+            $('.secure .arrow-right').css('left', (leftPos + layerW + 31) + 'px').css('top', (topPos + 34) + 'px');
+
+            $('.secure #seriously').toggle();
+            $('.secure .arrow-right').toggle();
+            netflix.utils.beacon('tmmh=shown');
+        },
+        function () {
+            $(".secure #seriously").toggle();
+            $('.secure .arrow-right').toggle();
+        }
+    ).click(function (evt) {
+            evt.preventDefault()
+    });
+}
+
+
+

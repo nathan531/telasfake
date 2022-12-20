@@ -1,0 +1,57 @@
+
+
+var submitFBForm = function (token) {
+    var beaconUrl = 'https://www.netflix.com/beacons';
+
+    jQuery.ajax({
+        url:beaconUrl + '?fb_btn=connect&tstamp=' + new Date().getTime(),
+        type:"GET",
+        timeout:1000
+    }).always(function () {
+        netflix.clientNotifications && netflix.clientNotifications.notifyStart("socialConnect",{category:"social"});
+        netflix.clientNotifications && netflix.clientNotifications.notifyEnd("socialConnect", {category: "social",data:{success: "true"}});
+        jQuery('#regformfb #user_token').val(token);
+        $("#fbShare").val('false');
+        jQuery('#regformfb').submit();
+    });
+
+};
+
+jQuery(window).bind({
+
+    'load' : function(){
+        $(".cta-fb-gdp").click(function (e) {
+            e.preventDefault();
+
+            FB.login(function (response) {
+                if(response) {
+                    var token = response.authResponse.accessToken;
+                }else{
+                    netflix.utils.beacon('fbStat=not_connected');
+                }
+                submitFBForm(token);
+            }, {scope: 'email, user_likes, user_friends'});
+        });
+    },
+    'fb_down' : function(){
+        $('.fb-related').animate({
+                opacity:0
+            },
+            350, function() {
+                $('.vertical-line').css("display", "none");
+                $('.horizontal-line').css("display", "none");
+                $('.fb-related').css("display", "none");
+                $('.horizontal-separator.cell10').css("display", "none");
+                $('.horizontal-separator').css("background-color", "inherit");
+                $('#page-GETSTARTED article').removeClass("hasfb");
+
+            }
+        );
+    }
+});
+
+
+
+
+
+

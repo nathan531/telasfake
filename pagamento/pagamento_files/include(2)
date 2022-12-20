@@ -1,0 +1,733 @@
+
+#accordion > ul > li, #accordion .grouping > ul > li {
+    position: relative;
+    padding-bottom: 12px;
+    list-style: none;
+}
+
+#accordion input[type="radio"] {
+    margin-right: 15px;
+    margin-left: 10px;
+    margin-top: -1px;
+}
+
+#accordion .section {
+    display: none;
+    border: 1px solid #dcdde0;
+    border-top: none;
+    padding: 20px 40px 30px;
+    background-color: #fff;
+}
+
+#accordion .payment-type.selected, #accordion .payment-type-fields.selected {
+    display: block;
+}
+
+#accordion > ul > li > span, #accordion .grouping > ul > li > span {
+    cursor: pointer;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 40px;
+    padding: 5px;
+    display: block;
+    border: 1px solid #dcdde0;
+    background: none;
+    background-color:#fff;
+
+}
+
+#accordion input[type="radio"] {
+    visibility:hidden;
+    opacity:0;
+    margin:0;
+    width:1px;
+}
+#accordion .radio_widget {
+    vertical-align: middle;
+    display:inline-block;
+    background: url(https://secure.netflix.com/us/layout/ecweb/common/carrot_sprite_16x33.png) no-repeat 4px 0;
+    height:18px;
+    width:22px;
+    margin:0 8px 0 5px;
+}
+#accordion input[type="radio"]:checked + .radio_widget {
+    background-position: 0 -18px;
+}
+
+#accordion .schufa_agree {
+    margin-top:10px;
+}
+
+.mustmatch {
+    font-size: 12px;
+    color: #9a9a9a;
+    font-style: italic;
+    padding-left: 16px;
+}
+
+/**CPF collection Field **/
+.cpfsection label{
+    max-width:none;
+}
+.cpfsection .mustmatch {
+    white-space: nowrap;
+    padding-left: 2px;
+}
+
+
+.terms {
+    margin-top:12px;
+    margin-bottom: 15px;
+    color: #262626;
+}
+
+.terms p {
+    margin-bottom: 10px;
+    color: #676767;
+    font-size: 11px;
+}
+
+#selectpreferred, .selectoption, p.selectoption {
+    font-size: 12px;
+    color: #808080;
+    padding-bottom: 7px;
+}
+
+.pp_finish {
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+/*** bottom section ***/
+
+.bottom .start {
+    float: left;
+}
+
+.bottom .secure-seal {
+    float: right;
+}
+
+.boxwarnerror {
+    padding: 4px;
+    border: 1px solid #D9181E;
+    color: #D9181E;
+}
+
+.boxwarn {
+    padding-bottom: 5px;
+}
+
+/*** cc logos ***/
+
+.cclogos {
+    position: relative;
+    vertical-align:middle;
+    margin-left: 5px;
+    display:inline-block;
+    *display:inline;
+    padding:1px;
+    background: inherit;
+    //margin-bottom: 0;
+    margin-left: 24px;
+}
+
+.cclogos span {
+    float: left;
+}
+
+.cclogosinline.cclogos  {
+    margin:25px 0 0;
+}
+
+
+.cclogos .amex, .cclogos .discover, .cclogos .mastercard, .cclogos .paypal, .cclogos .visa, .cclogos .AMEX, .cclogos .DISCOVER, .cclogos .MASTERCARD, .cclogos .PAYPAL, .cclogos .VISA, .cclogos .diners, .cclogos .DINERS, .cclogos .IDEAL, .cclogos .ideal, .cclogos .CARTES_BANCAIRES {
+    height: 25px;
+    width: 39px;
+    margin-right: 6px;
+}
+
+.cclogos .IDEAL, .cclogos .ideal {
+    height: 28px;
+    width: 39px;
+    margin-right: 6px;
+}
+
+.cclogos .elo, .cclogos .ELO, .cclogos .HSBC_BRAZIL, .cclogos .CITIBANK_BRAZIL, .cclogos .BRADESCO_BRAZIL, .cclogos .SANTANDER_BRAZIL, .cclogos .ITAU_BRAZIL {
+    height: 25px;
+    width: 25px;
+    margin-right: 6px;
+}
+
+.cclogos .CARTES_BANCAIRES {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/icons/cartesbancaires.png) no-repeat 0 0;
+}
+
+.cclogos .amex, .cclogos .AMEX {
+    background: url(https://secure.netflix.com/us/ffe/siteui/acquisition/payment/10_18_2014_icon_amex_37x25.png) no-repeat 0 0;
+}
+
+.cclogos .discover, .cclogos .DISCOVER {
+    background: url(https://secure.netflix.com/us/ffe/siteui/acquisition/payment/10_18_2014_icon_discovery_37x25.png) no-repeat 0 0;
+}
+
+.cclogos .mastercard, .cclogos .MASTERCARD {
+    background: url(https://secure.netflix.com/us/ffe/siteui/acquisition/payment/10_18_2014_icon_master_37x25.png) no-repeat 0 0;
+}
+
+.cclogos .visa, .cclogos .VISA {
+    background: url(https://secure.netflix.com/us/ffe/siteui/acquisition/payment/12_11_2014_icon_visa_37x25.png) no-repeat 0 0;
+}
+
+.cclogos .diners, .cclogos .DINERS {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/icons/diners.png) no-repeat 0 0;
+}
+
+
+.cclogos .elo, .cclogos .ELO {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/icons/elo.png) no-repeat 0 0;
+}
+
+.cclogos .HSBC_BRAZIL {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/icons/hsbc.png) no-repeat 0 0;
+}
+
+.cclogos .CITIBANK_BRAZIL {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/icons/citi.png) no-repeat 0 0;
+}
+
+.cclogos .BRADESCO_BRAZIL {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/icons/bradescol.png) no-repeat 0 0;
+}
+
+.cclogos .SANTANDER_BRAZIL {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/icons/santander.png) no-repeat 0 0;
+}
+
+.cclogos .ITAU_BRAZIL {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/icons/itau.png) no-repeat 0 0;
+}
+
+.cclogos .oivelox {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/icons/oivelox.png) no-repeat 0 0;
+    height: 26px;
+    width: 26px;
+    margin-right: 6px;
+}
+
+.cclogos .cablevision {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/icons/cablevision.png) no-repeat 0 0;
+    height: 20px;
+    width: 139px;
+    margin-right: 6px;
+}
+
+.cclogos .netvirtua {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/icons/netvirtua.png) no-repeat 0 0;
+    height: 20px;
+    width: 68px;
+    margin-right: 6px;
+}
+
+.cclogos .telmex {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/icons/telmex.png) no-repeat 0 0;
+    height: 20px;
+    width: 111px;
+    margin-right: 6px;
+}
+
+.cclogos .vivo {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/icons/vivo.png) no-repeat 0 0;
+    height: 20px;
+    width: 47px;
+    margin-right: 6px;
+}
+
+.cclogos .ideal, .cclogos .IDEAL {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/icons/ideal.png) no-repeat 0 0;
+}
+
+.cclogos .PAYPAL {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/icons/paypal.png) no-repeat 0 0;
+    width: 72px;
+    margin-top: 6px;
+}
+
+#accordion .cardlogostop, .cardlogostop {
+    display:none;
+}
+
+
+#cvvlogo {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/security_card_single.png) no-repeat 0 0;
+    width: 152px;
+    height:105px;
+}
+#cvvlogo.AMEX {
+    background: url(https://secure.netflix.com/us/layout/ecweb/payment/security_card_dual.png) no-repeat 0 0;
+    width:306px;
+    height:105px;
+}
+/*****/
+
+/**** form styling ***/
+
+.fields select {
+    font-weight: bold;
+}
+
+.fields input[type=text], #ccblock input[type=text], #ddblock input[type=text], .type-block input[type=text], #ddblock input[type=number], form[name=paymentform] input.cardNumber, #ddblock.payment-type-EU_DIRECT_DEBIT form[name=paymentform] #accountNumber {
+    width: 327px;
+    font-weight: bold;
+}
+
+
+
+select[name="expirationMonth"] {
+    width:178px;
+}
+select[name="expirationYear"] {
+    width:130px;
+}
+
+.payment-type-EU_DIRECT_DEBIT .birthDay, .payment-type-EU_DIRECT_DEBIT .birthMonth, .payment-type-EU_DIRECT_DEBIT .birthYear, .payment-type-EU_DIRECT_DEBIT .addressStreet, .payment-type-EU_DIRECT_DEBIT .addressCity, .payment-type-EU_DIRECT_DEBIT .addressPostalCode {
+    float: left;
+}
+
+.payment-type-EU_DIRECT_DEBIT .birthDay, .payment-type-EU_DIRECT_DEBIT .birthMonth {
+    margin-right: 10px;
+}
+
+.payment-type-EU_DIRECT_DEBIT .birthYear, .payment-type-EU_DIRECT_DEBIT .addressPostalCode {
+    margin-right: 20px;
+}
+
+.payment-type-EU_DIRECT_DEBIT .addressPostalCode, .payment-type-EU_DIRECT_DEBIT .accountNumber {
+    clear: both;
+}
+
+.payment-type-EU_DIRECT_DEBIT select[name=birthDay], .payment-type-EU_DIRECT_DEBIT label[for=birthDay], .payment-type-EU_DIRECT_DEBIT select[name=birthMonth] {
+    width: 99px;
+}
+
+#ddblock.payment-type-EU_DIRECT_DEBIT input[type=number][name=birthYear],
+#ddblock.payment-type-EU_DIRECT_DEBIT input[type=text][name=birthYear] {
+    width: 109px;
+}
+
+.payment-type-EU_DIRECT_DEBIT label[for=birthDay] {
+    overflow: visible;
+    white-space: nowrap;
+}
+
+form[name=paymentform] .exp .expdiv {
+    display: inline-block;
+    width: 11px;
+    border-bottom: 1px solid #B1B4B7;
+    height: 20px;
+    vertical-align: top;
+}
+
+form[name=paymentform] input.securityCode {
+    width: 125px;
+}
+
+.fields .fname, .fields .exp, .payment-type-CC .fields .cnumber {
+    float: left;
+    margin-right:20px;
+}
+
+.fields .zipnumberinline, .fields .scode, .fields .lname, .payment-type-CC .cpfsection  {
+    float: left;
+}
+
+.fields .zipnumberinline.zipnumber input[type=text]   {
+    //float: left;
+    width: 200px;
+}
+
+.payment-type-CC .scode  {
+    margin-right:20px;
+}
+
+.fields label, .fields label, #ddfields label {
+    display: block;
+    color: #3c3c3c;
+    max-width: 327px;
+}
+
+.fields .clgroup {
+    white-space: nowrap;
+}
+
+form#ddform select {
+    width: 327px;
+}
+
+#ddblock #accountNumber {
+    width: 166px;
+}
+
+.main.contents-wrapper .fields input.error, #ccblock input.error, #ddblock input.error, .type-block input.error, form[name=paymentform] input.cardNumber.error, form[name=paymentform] select.error {
+    border: 2px solid #fa6724;
+}
+
+
+input#cardNumber, input.cardNumber, input#securityCode, input.securityCode, input#cardNumber.error, input.cardNumber.error, input#securityCode.error, input.securityCode.error, input.secure-icon, input.error.secure-icon, .payment-type-EU_DIRECT_DEBIT input[name=accountNumber] {
+    background: url(https://secure.netflix.com/us/layout/ecweb/common/padlock_grey.png) no-repeat 95%;
+}
+
+/*  */
+input#cardNumber::-ms-clear, input.cardNumber::-ms-clear, input#securityCode::-ms-clear, input.securityCode::-ms-clear, input#cardNumber.error::-ms-clear, input.cardNumber.error::-ms-clear, input#securityCode.error::-ms-clear, input.securityCode.error::-ms-clear, input.secure-icon::-ms-clear, input.error.secure-icon::-ms-clear, .payment-type-EU_DIRECT_DEBIT input[name=accountNumber]::-ms-clear {
+    display: none;
+}
+
+#zipcode {
+    margin-left:0;
+}
+
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/*****/
+
+/**** Direct Debit ****/
+
+#ddblock .specific-fields #customerIdentification {
+    display: none;
+}
+
+#ddblock #customerIdentification, #ddblock #bankName, #idealblock #idealBankSelect {
+    display: block;
+}
+
+#ddblock #bankName, #idealblock #idealBankSelect {
+    width: 327px;
+}
+
+#ddblock #branchCode {
+    width: 140px;
+    margin-right: 25px;
+}
+
+#ddblock #branchCode.secure-icon {
+    background-image: none;
+}
+
+#ddblock #accountNumberCheckDigits {
+    width: 70px;
+    background-position: 85%;
+}
+
+#ddblock label[for=accountNumberCheckDigits] {
+    visibility: hidden;
+    white-space: nowrap;
+}
+
+#ddblock #branchCodeCheckDigit {
+    width: 135px;
+}
+
+#ddblock .placeholderBranchCode {
+    float:left;
+    width:160px;
+}
+
+#ddblock #bANumber {
+    white-space: nowrap;
+}
+
+#cpf_notice {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+#ddblock .ddflname, #ddblock .cpfsection, #ddblock .banksection {
+    margin-bottom: 8px;
+}
+
+#ddblock #branchCode.secure-icon, #ddblock #accountNumberCheckDigits.secure-icon {
+    background-image: none;
+}
+
+#section_branchCode {
+    float: left;
+    width: 160px;
+}
+
+#section_accountNumber {
+    float: left;
+    width: 175px;
+}
+
+#section_accountNumberCheckDigits {
+    float: left;
+    width: 75px;
+}
+
+.iban_text {
+    display:none;
+    color: #9a9a9a;
+    font-style: italic;
+    font-size: 14px;
+    margin: 0 3px 10px;
+}
+
+#payment_options #payment_secure_server {
+    text-align:right;
+}
+
+#price-tiers {
+    white-space: nowrap;
+    text-align: left;
+    color:#333;
+    margin-top:30px;
+    margin-bottom:40px;
+}
+
+#price-tiers .hd_avail {
+    color: #666;
+    font-weight: normal;
+    font-size: 12px;
+    margin-top:12px;
+    text-align: left;
+    white-space: normal;
+}
+
+/****/
+
+/**** iDD ****/
+
+#idhowitworks h2 {
+    font-size:16px;
+    font-weight:bold;
+    color:#000;
+    margin-bottom:10px;
+}
+#idhowitworks h3 {
+    font-size:15px;
+    margin-bottom:30px;
+    font-weight:normal;
+}
+
+/*****/
+
+#plan_info_stream_1,
+#plan_info_stream_2,
+#plan_info_stream_4 {
+    display:none;
+}
+
+.edit_toggle {
+    text-decoration: underline;
+    cursor:pointer;
+}
+
+#gift_code_link {
+    margin:15px 0 0;
+}
+
+.payment_ftr {
+    margin-bottom:10px;
+}
+
+@media only screen and (max-width : 1024px) {
+
+    .fields input[type=text], #ccblock input[type=text], #ddblock input[type=text], .type-block input[type=text], #ddblock input[type=number], form[name=paymentform] input.cardNumber, #ddblock.payment-type-EU_DIRECT_DEBIT form[name=paymentform] #accountNumber {
+        width: 300px;
+    }
+
+    .fields label, .fields label, #ddfields label {
+        max-width: 300px;
+    }
+
+    .fields .cpfsection label{
+        max-width:none;
+    }
+
+    .payment-type-EU_DIRECT_DEBIT select[name=birthDay], .payment-type-EU_DIRECT_DEBIT label[for=birthDay], .payment-type-EU_DIRECT_DEBIT select[name=birthMonth] {
+        width: 90px;
+    }
+
+    #ddblock.payment-type-EU_DIRECT_DEBIT input[type=number][name=birthYear],
+    #ddblock.payment-type-EU_DIRECT_DEBIT input[type=text][name=birthYear]{
+        width: 100px;
+    }
+
+    form#ddform select {
+        width: 300px;
+    }
+
+    #ddblock #bankName, #idealblock #idealBankSelect {
+        width: 300px;
+    }
+
+}
+
+@media only screen and (max-width : 767px) {
+    #price-tiers {
+        white-space: normal;
+        text-align: left;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    #payment_options #secure {
+        width:auto;
+    }
+    #payment_options #secure h4 {
+        display:block;
+        margin-top: 24px;
+    }
+    #payment_options #secure .term-size {
+        display:none;
+    }
+}
+
+@media only screen and (max-width : 745px) {
+    .fields label, .fields label, #ddfields label {
+        max-width: none;
+    }
+
+    .payment-type-EU_DIRECT_DEBIT .addressStreet {
+        clear: both;
+    }
+}
+
+@media only screen and (max-width : 450px) {
+
+    #accordion {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #accordion .section {
+        padding: 20px 15px;
+        border-bottom:none;
+    }
+
+    #accordion > ul > li, #accordion .grouping > ul > li {
+        padding-bottom:5px;
+    }
+
+    #accordion .cclogos {
+        display:none;
+    }
+
+    section.contents {
+        padding-bottom:0;
+    }
+
+    .payment-type-EU_DIRECT_DEBIT .birthDay, .payment-type-EU_DIRECT_DEBIT .birthMonth, .payment-type-EU_DIRECT_DEBIT .birthYear {
+        margin-right: 0;
+    }
+
+    .payment-type-EU_DIRECT_DEBIT .birthDay, .payment-type-EU_DIRECT_DEBIT .birthMonth {
+        margin-right: 2%;
+    }
+
+    .fields .fname, .fields .lname, .fields .exp, .payment-type-CC .fields .cnumber, .payment-type-EU_DIRECT_DEBIT .addressStreet, .payment-type-EU_DIRECT_DEBIT .addressCity, .payment-type-EU_DIRECT_DEBIT .addressPostalCode {
+        float: none;
+        margin-right:0;
+    }
+
+    .fields input[type=text], #ccblock input[type=text], #ddblock input[type=text], .type-block input[type=text], #ddblock input[type=number], form[name=paymentform] input.cardNumber, #ddblock.payment-type-EU_DIRECT_DEBIT form[name=paymentform] #accountNumber, #ddblock #bankName, #idealblock #idealBankSelect, #ddblock #branchCode  {
+        width: 100%;
+        max-width:none;
+    }
+
+    .payment-type-EU_DIRECT_DEBIT select[name=birthDay], .payment-type-EU_DIRECT_DEBIT label[for=birthDay], .payment-type-EU_DIRECT_DEBIT select[name=birthMonth], #ddblock.payment-type-EU_DIRECT_DEBIT input[type=number][name=birthYear], #ddblock.payment-type-EU_DIRECT_DEBIT input[type=text][name=birthYear] {
+        width: 100%;
+    }
+
+    .payment-type-EU_DIRECT_DEBIT .birthDay, .payment-type-EU_DIRECT_DEBIT .birthDay, .payment-type-EU_DIRECT_DEBIT .birthMonth, #ddblock.payment-type-EU_DIRECT_DEBIT .birthYear {
+        width: 32%;
+    }
+
+    select[name="expirationMonth"],
+    select[name="expirationYear"] {
+        width: auto;
+    }
+
+    .cclogosinline.cclogos  {
+        display:none;
+    }
+
+    #accordion .cardlogostop, .cardlogostop {
+        display:block;
+        margin-left: 0;
+        margin-bottom: 15px;
+    }
+
+    .bottom .start, .bottom .secure-seal {
+        float: none;
+    }
+
+    #ddblock .placeholderBranchCode, #section_branchCode {
+        float:none;
+        width:100%;
+    }
+
+    .iban_text {
+        display:block;
+    }
+
+    #payment_options #payment_secure_server {
+        text-align:center;
+    }
+    #payment_options #secure .secure {
+        background-size: 14% 50%;
+        padding-right: 22px
+    }
+    #payment_options #payment_secure_server #secure h4 {
+        font-size:14px;
+        margin-top: 18px;
+    }
+    #payment_options #payment_secure_server {
+        margin: 10px auto 5px;
+    }
+
+
+}
+
+
+
+
+@media
+(-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+
+    .cclogos .amex, .cclogos .AMEX {
+        background: url(https://secure.netflix.com/us/ffe/siteui/acquisition/payment/10_18_2014_icon_amex_37x25_2x.png) no-repeat 0 0;
+    }
+
+    .cclogos .discover, .cclogos .DISCOVER {
+        background: url(https://secure.netflix.com/us/ffe/siteui/acquisition/payment/10_18_2014_icon_discovery_37x25_2x.png) no-repeat 0 0;
+    }
+
+    .cclogos .mastercard, .cclogos .MASTERCARD {
+        background: url(https://secure.netflix.com/us/ffe/siteui/acquisition/payment/10_18_2014_icon_master_37x25_2x.png) no-repeat 0 0;
+    }
+
+    .cclogos .visa, .cclogos .VISA {
+        background: url(https://secure.netflix.com/us/ffe/siteui/acquisition/payment/12_11_2014_icon_visa_37x25_2x.png) no-repeat 0 0;
+    }
+
+    .cclogos .amex, .cclogos .AMEX,
+    .cclogos .discover, .cclogos .DISCOVER,
+    .cclogos .mastercard, .cclogos .MASTERCARD,
+    .cclogos .visa, .cclogos .VISA{
+        background-size: 97%;
+        height:30px;
+    }
+
+
+    /*    input#cardNumber, input.cardNumber, input#securityCode, input.securityCode, input#cardNumber.error, input.cardNumber.error, input#securityCode.error, input.securityCode.error, input.secure-icon, input.error.secure-icon, .payment-type-EU_DIRECT_DEBIT input[name=accountNumber] {
+            background: url(https://secure.netflix.com/us/ffe/siteui/acquisition/common/10_18_2014_icon_greyPadLock_12x15_2x.png) no-repeat 85%;
+        }
+    */
+}

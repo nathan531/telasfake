@@ -1,0 +1,133 @@
+netflix.namespace("netflix.ajaxUtils");
+
+
+netflix.ajaxUtils = (function($) {
+
+    /**
+     * Logs retry status to Ichnaea
+     */
+    _logStatus = function(msg, reason){
+        if(msg){
+            //console.log("RETRY HAPPENED,logging status, msg"+msg);
+            netflix.utils.beacon('smop_retry=true&status=' + msg);
+            var currentTry = netflix.ajaxUtils.retryObj.currentTry;
+
+
+            netflix.clientNotifications && netflix.clientNotifications.notifyStart("uiDataRequest", {category: "uiQOE", data: {reason: reason, errorStatusMessage: msg, retryCount: currentTry}});
+            netflix.clientNotifications && netflix.clientNotifications.notifyEnd("uiDataRequest", {category: "uiQOE", data:{reason: reason, errorStatusMessage: msg, retryCount: currentTry}});
+        }
+    },
+
+    /**
+     * Fetches the value of the specified url param.
+     * Eg: http://netflix.com/?locale=en-US&forceCountry=US
+     * var locale = getUrlParamValue('locale');
+     */
+    getUrlParamValue = function(searchParam)
+    {
+        var pageUrl = window.location.search.substring(1);
+        var urlVariables = pageUrl.split('&');
+        for (var i = 0; i < urlVariables.length; i++)
+        {
+            var paramName = urlVariables[i].split('=');
+            if (paramName[0] == searchParam)
+            {
+                return paramName[1];
+            }
+        }
+    },
+    /**
+     *  Retry implementation
+     */
+    _handleRetry = function (xhr, exceptionStatus, msg) {
+        //console.log("[nfAjaxUtils] : handling retries....");
+        var retry = netflix.ajaxUtils.retryObj;
+
+        if (exceptionStatus) {
+            var remaining = retry.count - retry.currentTry;
+
+
+            if (remaining >= 0) {
+                return (function (jqXHR, retry) {
+
+                    if(jqXHR.workingRetry){
+                        jqXHR.data.workingRetry = jqXHR.workingRetry;
+                    }
+
+                    _logStatus(msg, 'retryingAgainToFetchKey');
+
+                    setTimeout(function () {
+                        jqXHR.timeout = jqXHR.timeout * 2;
+                        jqXHR.data._retry = retry.currentTry;
+                        retry.currentTry++;
+                        jqXHR.data.delay = retry.delay;
+                        $.ajax(jqXHR);
+                        retry.delay = retry.delay * 2;
+
+                    }, retry.delay);
+
+
+
+                }(netflix.ajaxUtils.xhrObj, retry));
+            }else{
+                _logStatus(msg, 'completeFailureToFetchKey');
+            }
+        }
+    },
+
+    /**
+     * Encapsulates creation of a retry object and makes an ajax request
+     */
+        makeRequest = function (url, params, options) {
+            // console.log("[nfAjaxUtils] : makeRequest()");
+            var retry = options.retry || new RetryObj(),
+                xhr;
+            retry.currentTry = 0;
+
+
+            if (!params.data) {
+                params.data = {};
+            }
+
+            if (params.workingRetry) {
+                params.data.workingRetry = params.workingRetry;
+            }
+
+            netflix.ajaxUtils.retryObj = retry;
+
+            netflix.ajaxUtils.xhrObj = $.extend(true, {}, {
+                url: url,
+                cache: false
+            }, params, options);
+
+            //Make the ajax request
+             xhr = jQuery.ajax(netflix.ajaxUtils.xhrObj);
+
+            return xhr;
+        },
+
+    /**
+     * Retries a request (only supports JSONP requests)
+     * @param {Object} xhr
+     * @param {Boolean} exceptionStatus - if set to true, the ajax retry is kicked off
+     */
+        retryRequest = function (xhr, exceptionStatus, status) {
+           // console.log("[nfAjaxUtils] : retryRequest()");
+            _handleRetry(xhr, exceptionStatus, status);
+        };
+
+
+    var RetryObj = function( count, delay, statusRange ) {
+        this.count = count || 2;
+        this.delay = delay || 1000;
+        this.currentTry = 0;
+    };
+
+    return {
+        makeRequest : makeRequest,
+        retryRequest : retryRequest,
+        getUrlParamValue : getUrlParamValue
+    };
+
+}(jQuery));
+

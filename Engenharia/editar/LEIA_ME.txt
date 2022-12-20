@@ -1,0 +1,6 @@
+Então para editar sua engenharia primeiramente abra a imagem no Photoshop 
+Após abrir a imagem faça suas modificações e salve, automaticamente irá mudar
+todo conteúdo da sua eng.html. 
+Caso queira editar a eng.html terá que ter um minimo de conhecimento sobre a linguagem HTML e CSS. 
+
+Qualquer dúvida adc Skyper: Live:Redrac_5

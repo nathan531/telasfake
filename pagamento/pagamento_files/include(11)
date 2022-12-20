@@ -1,0 +1,282 @@
+netflix.namespace("netflix.payment");
+
+netflix.payment.selectorAgreeTerms = 'input[name=agreeToTerms]';
+netflix.payment.selectorMopElements = '.payment-type-fields, .payment-type';
+
+netflix.payment.getMopElementPair = function (moptype)  {
+    return jQuery('.payment-type-fields.payment-type-' + moptype + ', .payment-type.payment-type-' + moptype, netflix.payment.accordionJqEl);
+};
+
+netflix.payment.getForm = function (moptype) {
+    return jQuery('form[data-moptype=' + moptype + ']', netflix.payment.accordionJqEl);
+};
+
+netflix.payment.handleMopSelection = function (event) {
+    var currentMopInput = jQuery('input[name=mopType]:checked', netflix.payment.accordionJqEl);
+    var currentMopType = currentMopInput.attr('value');
+    var targetMopInput = jQuery('input[name=mopType]', event.currentTarget);
+    var targetMopType = targetMopInput.attr('value');
+
+    currentMopInput.removeAttr('checked');
+    netflix.window.trigger('mop_deselect', [currentMopType]);
+
+    netflix.payment.animateClosed(currentMopType);
+
+    if (targetMopType != currentMopType) {
+
+        targetMopInput.prop('checked', true);
+        netflix.window.trigger('mop_select', [targetMopType]);
+
+        netflix.payment.animateOpen(targetMopType);
+
+        netflix.utils.beacon('mop_select=' + targetMopType);
+    }
+};
+
+netflix.payment.handleSubmit = function (event) {
+    var selectedForm = jQuery(event.currentTarget);
+    var selectedMopType = selectedForm.attr('data-moptype');
+
+    if (netflix.payment.isTermsCheckSatisfied(selectedForm)) {
+        netflix.window.trigger('validate-form', [selectedMopType, event]);
+
+        jQuery("body, button, input, select").css("cursor", "wait");
+
+        netflix.window.trigger('wait-on-data');
+
+        if (!netflix.payment.isHoldBack(selectedForm)) {
+            try {
+                var smopKeyDownloaded = false,
+                    smopEncrypted = false;
+                var smopOps = jQuery.when(netflix.payment.smop.pkgjs_loaded);
+
+                smopOps.done(function () {
+                    // 
+                    var pkg = netflix.payment.getSmopPackage(selectedMopType);
+                    var blob = netflix.payment.smop.encrypt(netflix.payment.smop.pubkey, pkg, selectedForm);
+
+                    jQuery('input[name=encryptedMopJson]', selectedForm).val(blob);
+                    jQuery('input[name=encryptedMopOn]', selectedForm).val("true");
+                    jQuery('input[name=encryptedMopJsonLength]', selectedForm).val(blob.length);
+                    smopKeyDownloaded = true;
+                    smopEncrypted = true;
+                });
+
+                smopOps.always(function () {
+                    netflix.payment.killSmoppedFields(selectedMopType);
+                    netflix.payment.accordionJqEl.off('submit', 'form');
+                    jQuery('input[name=encryptedMop]', selectedForm).val(netflix.payment.createSmopDump(smopKeyDownloaded, smopEncrypted));
+                    selectedForm.submit();
+                });
+            } catch (e) {
+                    netflix.payment.killSmoppedFields(selectedMopType);
+                    netflix.utils.beacon('smop_status=packaging_failure' + '&text=' + e.message).done(function () {
+                        netflix.payment.accordionJqEl.off('submit', 'form');
+                        smopEncrypted = false;
+                        jQuery('input[name=encryptedMop]', selectedForm).val(netflix.payment.createSmopDump(smopKeyDownloaded, smopEncrypted));
+                        selectedForm.off('submit').submit();
+                });
+            }
+
+            return false;
+        }
+    } else {
+        netflix.window.trigger('terms_unchecked', selectedMopType);
+
+        netflix.utils.clearDoubleSubmitTimeout();
+
+        return false;
+    }
+};
+
+netflix.payment.isTermsCheckSatisfied = function (form) {
+    var result = false, agreeEl = jQuery(netflix.payment.selectorAgreeTerms, form);
+
+    if (agreeEl.length == 0) {
+        result = true;
+    }  else {
+        result = agreeEl.prop('checked');
+    }
+
+    return result;
+};
+
+netflix.payment.isHoldBack = function (form) {
+    return jQuery('[name=encryptedMopJson]', form).length == 0;
+};
+
+netflix.payment.getSmopFields = function (moptype) {
+    return jQuery('.payment-type-' + moptype + ' [smopname]');
+};
+netflix.payment.createSmopDump = function(smopKeyDownloaded, smopKeyEncrypted){
+    return "key="+smopKeyDownloaded+"&encrypt="+smopKeyEncrypted;
+};
+
+netflix.payment.killSmoppedFields = function (moptype) {
+    var smopFields = netflix.payment.getSmopFields(moptype).filter(':not([smopname=expMon],[smopname=expYr])');
+    jQuery.each(smopFields, function (index, element) {
+        var smopEl = jQuery(element);
+        smopEl.attr('placeholder', smopEl.val());
+        smopEl.val('');
+    });
+};
+
+netflix.payment.getSmopPackage = function (moptype) {
+    var smopFields = netflix.payment.getSmopFields(moptype);
+    // 
+    var formmatedMopType = moptype == 'DC' ? 'cc' : moptype.toLowerCase();
+    var pkg = '{';
+
+    jQuery.each(smopFields, function (index, element) {
+        var smopEl = jQuery(element);
+        pkg += '"' + smopEl.attr('smopname') + '": "' + smopEl.val() + '",';
+    });
+
+    pkg = pkg.slice(0, pkg.length - 1);
+
+    pkg += '}';
+
+    return '{ "' + formmatedMopType + '" : ' + pkg + ' }';
+};
+
+netflix.payment.hideAgreeWarning = function (form) {
+    jQuery(".boxwarn", form).remove();
+    jQuery(".terms-agreement", form).toggleClass('boxwarnerror', false);
+};
+
+netflix.payment.showAgreeWarning = function (form) {
+    jQuery(".boxwarn", form).remove();
+    jQuery(".terms-agreement", form).prepend("<div class='boxwarn'></div>");
+    jQuery(".boxwarn", form).append("<b>" + jQuery("input[name=msg_agree]", form).val() + "</b>");
+    jQuery(".terms-agreement", form).toggleClass('boxwarnerror', true);
+};
+
+netflix.payment.animateClosed = function (moptype) {
+    jQuery(".payment-type-fields.payment-type-" + moptype, netflix.payment.accordionJqEl).slideUp(350, function () {
+        netflix.payment.getMopElementPair(moptype).removeClass('selected');
+    });
+};
+
+netflix.payment.animateOpen = function (moptype) {
+    jQuery(".payment-type-fields.payment-type-" + moptype).slideDown(350, function () {
+        var targetMopElementPair = netflix.payment.getMopElementPair(moptype);
+        targetMopElementPair.toggleClass('selected', true);
+        netflix.payment.revealAccordion();
+    });
+};
+
+netflix.payment.revealAccordion = function () {
+    var firstKey = jQuery(".payment-type-fields.selected", netflix.payment.accordionJqEl).parents("li");
+    var sibSpan = jQuery(".payment-type-fields.selected", netflix.payment.accordionJqEl).siblings("span");
+    var offsetTop = firstKey.offset().top;
+    var padding = 60;
+    var bottomPos = (firstKey.height() - padding) + offsetTop;
+    if(!sibSpan.hasClass("doTrigger")) {
+        if (bottomPos > netflix.window.height()) {
+            $('html, body').animate({scrollTop: offsetTop}, 300);
+        }
+    } else {
+        sibSpan.removeClass("doTrigger");
+    }
+};
+
+netflix.payment.init = function (root) {
+    netflix.utils.beacon("payment_accordion_js=initialized");
+    netflix.payment.accordionSelector = root;
+    netflix.payment.accordionJqEl = jQuery(root);
+
+    netflix.payment.accordionJqEl.on('click', '.payment-type', netflix.payment.handleMopSelection);
+    netflix.payment.accordionJqEl.on('keydown', '.terms-checkbox', function (event) {
+        var input = jQuery(event.currentTarget).parent().find('input[name=agreeToTerms]');
+        var checked = input.prop('checked');
+
+        if (event.keyCode == 32 || event.keyCode == 13) {
+            if (checked) {
+                input.removeAttr('checked');
+            } else {
+                input.prop('checked', true);
+            }
+        }
+    });
+    netflix.payment.accordionJqEl.on('submit', 'form', netflix.payment.handleSubmit);
+
+    netflix.utils.preventDoubleSubmit(root + ' form');
+
+    netflix.payment.accordionJqEl.on('click', netflix.payment.selectorAgreeTerms, function (event) {
+        var form = jQuery(event.currentTarget).closest('form');
+        netflix.payment.hideAgreeWarning(form);
+    });
+    netflix.window.on('terms_unchecked', function (event, moptype) {
+        var form = netflix.payment.getForm(moptype);
+        netflix.payment.showAgreeWarning(form);
+    });
+
+    // 
+    if (!netflix.payment.isHoldBack(root + ' form')) {
+        netflix.namespace('netflix.payment.smop');
+
+
+        var url = "https://ncds.netflix.com/v1/2/jsonp/current";
+
+        var retry = window.netflix.ajaxUtils.getUrlParamValue('retry');
+
+        if(retry == 'true'){
+            url = 'https://api.test.netflix.com/uitools/error?revision=latest';
+        }
+        var workingRetry = window.netflix.ajaxUtils.getUrlParamValue('workingRetry');
+
+        var params = {
+                dataType: 'jsonp',
+                jsonp: false,
+                jsonpCallback: 'callback',
+                cache:false,
+                timeout:2000
+            },
+            options = {
+                success: function (data, status, xhr) {
+                    netflix.utils.beacon('smop_success=true&pubKeyLen=' + JSON.stringify(data).length);
+                    try {
+                        if(!data){
+                            netflix.ajaxUtils.retryRequest(xhr, true, status);
+                        }else {
+                            var pubKey = JSON.stringify(data);
+                            JSON.parse(pubKey);
+                        }
+                        try {
+                            netflix.clientNotifications && netflix.clientNotifications.notifyStart("uiDataRequest", {category: "uiQOE", data: {statusMessage: status, pubKeyLen: JSON.stringify(data).length}});
+                            netflix.clientNotifications && netflix.clientNotifications.notifyEnd("uiDataRequest", {category: "uiQOE", data: {statusMessage: status, pubKeyLen: JSON.stringify(data).length}});
+                        } catch (error) {}
+                        netflix.payment.smop.pubkey = data;
+                    } catch( e ) {
+                        netflix.ajaxUtils.retryRequest(xhr, true, status);
+                    }
+                },
+                error: function(xhr, status, error){
+                    netflix.utils.beacon('smop_error=true&status=' + status);
+                    netflix.ajaxUtils.retryRequest(xhr, true, status);
+                }
+        };
+
+        if(workingRetry){
+            params.workingRetry = workingRetry;
+        }
+        window.netflix.ajaxUtils.makeRequest(url, params, options);
+        netflix.payment.smop.pkgjs_loaded = jQuery.Deferred();
+
+        netflix.utils.loadScript('https://www.netflix.com/js/include?f=smop_packaging;WEB_JS&d=2', true, function () {
+            if (typeof netflix.payment.smop.encrypt == 'function') {
+                netflix.utils.beacon('smop_pkg_js_resp=loaded');
+                netflix.payment.smop.pkgjs_loaded.resolve();
+            } else {
+                netflix.payment.smop.pkgjs_loaded.reject();
+            }
+        });
+
+        netflix.payment.smop.pkgjs_loaded.fail(function () {
+            netflix.utils.beacon('smop_pkg_js_resp=failedToLoad');
+        });
+    }
+
+    // 
+    jQuery('<img src="https://secure.netflix.com/us/layout/signup/streaming/check.png">').load();
+};

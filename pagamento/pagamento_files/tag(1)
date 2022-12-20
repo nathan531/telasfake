@@ -1,0 +1,179 @@
+BrightTag.instance.errors({enabled:false});
+BrightTag.instance.dbe('visitor id', 'netflix.tracking.visitorid', {pageId:16313});
+BrightTag.instance.dbe('sub region (signup or movies)', 'jQuery(\x27body\x27).attr(\x27data-subregion\x27)', {pageId:16313});
+BrightTag.instance.dbe('page', 'netflix.tracking.page', {pageId:16313});
+BrightTag.instance.dbe('country (signup or movies)', 'jQuery(\x27body\x27).attr(\x27data-country\x27)', {pageId:16313});
+BrightTag.instance.dbe('is in contiuum test cell', 'typeof netflix.tracking.contin !\x3d \x27undefined\x27', {pageId:16313});
+BrightTag.instance.dbe('anonymous or non-member', 'netflix.tracking.anonornon', {pageId:16313});
+BrightTag.instance.dbe('region (signup or movies)', 'jQuery(\x27body\x27).attr(\x27data-region\x27)', {pageId:16313});
+BrightTag.instance.appendContent('\x3c!--\nStart of DoubleClick Floodlight Tag: Please do not remove\nActivity name of this tag: (Global) :: All ODP (For Cookie Sync)\nURL of the webpage where the tag is expected to be placed: http://movies.netflix.com/movie/\nThis tag must be placed between the \x3cbody\x3e and \x3c/body\x3e tags, as close as possible to the opening tag.\nCreation Date: 06/05/2014\n--\x3e\n\x3cscript type\x3d\x22text/javascript\x22\x3e\nvar axel \x3d Math.random() + \x22\x22;\nvar a \x3d axel * 10000000000000 + \x22\x22;\ndocument.write(\x27\x3ciframe src\x3d\x22https://4396297.fls.doubleclick.net/activityi;src\x3d4396297;type\x3dgl-al0;cat\x3dGloba0;ord\x3d\x27 + a + \x27?\x22 width\x3d\x221\x22 height\x3d\x221\x22 frameborder\x3d\x220\x22 style\x3d\x22display:none\x22\x3e\x3c/iframe\x3e\x27);\njQuery.ajax({ \n    type: \x22POST\x22, \n    url: \x27/ichnaea/log\x27,\n    data: JSON.stringify({ \x22events\x22: [ {\n        \x22name\x22:\x22adVendorSync\x22,\n        \x22data\x22: {\n            \x22ad_vendor_sync_type\x22:\x22doubleclick\x22,\n            \x22ad_vendor_sync_id\x22: a\n            }\n            } ]\n    }),\n    contentType:  \x27application/json\x27,\n    beforeSend :  function (request) { request.setRequestHeader(\x22X-Netflix.ichnaea.request.type\x22, \x22IchnaeaRequest\x22); }\n});\n\x3c/script\x3e\n\n\x3c!-- End of DoubleClick Floodlight Tag: Please do not remove --\x3e',{tagId:1132134});
+BrightTag.instance.secondary(function(serverURL) {
+try { if (eval('bt_data(\x27sub region (signup or movies)\x27) \x3d\x3d \x27UK\x27')) {
+serverURL.cf(85038);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('!!bt_data(\x27anonymous or non-member\x27)')) {
+serverURL.cf(89754);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27sub region (signup or movies)\x27) \x3d\x3d \x27UK\x27')) {
+serverURL.cf(231810);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22BR\x22 \x26\x26 bt_data(\x27anonymous or non-member\x27) \x3d\x3d true')) {
+serverURL.cf(233908);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22MX\x22 \x26\x26 bt_data(\x27anonymous or non-member\x27) \x3d\x3d true')) {
+serverURL.cf(236028);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22AR\x22 \x26\x26 bt_data(\x27anonymous or non-member\x27) \x3d\x3d true')) {
+serverURL.cf(236166);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22CL\x22 \x26\x26 bt_data(\x27anonymous or non-member\x27) \x3d\x3d true')) {
+serverURL.cf(236185);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22CO\x22 \x26\x26 bt_data(\x27anonymous or non-member\x27) \x3d\x3d true')) {
+serverURL.cf(236208);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('(bt_data(\x27anonymous or non-member\x27) \x3d\x3d true \x26\x26 bt_data(\x27region (signup or movies)\x27) \x3d\x3d \x22LATIN_AMERICA\x22 \x26\x26 bt_data(\x27country (signup or movies)\x27) !\x3d \x22BR\x22 \x26\x26 bt_data(\x27country (signup or movies)\x27) !\x3d \x22MX\x22 \x26\x26 bt_data(\x27country (signup or movies)\x27) !\x3d \x22AR\x22 \x26\x26 bt_data(\x27country (signup or movies)\x27) !\x3d \x22CL\x22 \x26\x26 bt_data(\x27country (signup or movies)\x27) !\x3d \x22CO\x22)')) {
+serverURL.cf(236217);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27sub region (signup or movies)\x27) \x3d\x3d \x27NORDICS\x27')) {
+serverURL.cf(288129);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27sub region (signup or movies)\x27) \x3d\x3d \x27UK\x27')) {
+serverURL.cf(374073);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x27US\x27 || bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x27CA\x27')) {
+serverURL.cf(385738);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('(!!bt_data(\x27anonymous or non-member\x27) \x26\x26 bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22Netherlands\x22)')) {
+serverURL.cf(466863);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x27CA\x27')) {
+serverURL.cf(625395);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x27US\x27')) {
+serverURL.cf(625472);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22BR\x22')) {
+serverURL.cf(625656);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22MX\x22')) {
+serverURL.cf(625722);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('(bt_data(\x27region (signup or movies)\x27) \x3d\x3d \x22LATIN_AMERICA\x22 \x26\x26 bt_data(\x27country (signup or movies)\x27) !\x3d \x22BR\x22 \x26\x26 bt_data(\x27country (signup or movies)\x27) !\x3d \x22MX\x22)')) {
+serverURL.cf(625764);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27sub region (signup or movies)\x27) \x3d\x3d \x27UK\x27')) {
+serverURL.cf(628586);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('\x27NORDICS\x27 \x3d\x3d bt_data(\x27sub region (signup or movies)\x27)')) {
+serverURL.cf(628773);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('\x27NETHERLANDS\x27\x3d\x3dbt_data(\x27sub region (signup or movies)\x27) ')) {
+serverURL.cf(903860);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27region (signup or movies)\x27) \x3d\x3d \x22LATIN_AMERICA\x22')) {
+serverURL.cf(955205);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('(bt_data(\x27anonymous or non-member\x27) \x3d\x3d true \x26\x26 bt_data(\x27region (signup or movies)\x27) \x3d\x3d \x22EUROPE\x22)')) {
+serverURL.cf(1272575).appendData('visitor id');
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('(bt_data(\x27anonymous or non-member\x27) \x3d\x3d true \x26\x26 bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22BR\x22)')) {
+serverURL.cf(1446662).appendData('visitor id');
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('(bt_data(\x27anonymous or non-member\x27) \x3d\x3d true \x26\x26 bt_data(\x27country (signup or movies)\x27) !\x3d \x22BR\x22 \x26\x26 bt_data(\x27region (signup or movies)\x27) \x3d\x3d \x22LATIN_AMERICA\x22)')) {
+serverURL.cf(1446671).appendData('visitor id');
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('(bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22FR\x22)')) {
+serverURL.cf(1459288);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('(bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22FR\x22)')) {
+serverURL.cf(1459297);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('(bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22AT\x22 || bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22CH\x22 || bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22DE\x22)')) {
+serverURL.cf(1459522);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('(bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22DE\x22 || bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22AT\x22 || bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22CH\x22)')) {
+serverURL.cf(1459523);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('(bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22CH\x22 || bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22AT\x22 || bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22DE\x22)')) {
+serverURL.cf(1465787);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22FR\x22')) {
+serverURL.cf(1466137);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('(bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22BE\x22 || bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22LU\x22)')) {
+serverURL.cf(1466246);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('(bt_data(\x27anonymous or non-member\x27) \x3d\x3d true || bt_data(\x27page\x27) \x3d\x3d \x22ORDERFINAL\x22)')) {
+serverURL.cf(1473819);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('(bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22US\x22 || bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22CA\x22)')) {
+serverURL.cf(1518999);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22BR\x22')) {
+serverURL.cf(1519058);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22MX\x22')) {
+serverURL.cf(1519084);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('(bt_data(\x27region (signup or movies)\x27) \x3d\x3d \x22LATIN_AMERICA\x22 \x26\x26 bt_data(\x27country (signup or movies)\x27) !\x3d \x22BR\x22 \x26\x26 bt_data(\x27country (signup or movies)\x27) !\x3d \x22MX\x22)')) {
+serverURL.cf(1519111);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27is in contiuum test cell\x27) \x3d\x3d true')) {
+serverURL.cf(1529336);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22AR\x22')) {
+serverURL.cf(1537454);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22CL\x22')) {
+serverURL.cf(1537490);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22CO\x22')) {
+serverURL.cf(1537611);
+}
+} catch(e) { bt_handle_exception(e); }
+try { if (eval('bt_data(\x27country (signup or movies)\x27) \x3d\x3d \x22PE\x22')) {
+serverURL.cf(1537669);
+}
+} catch(e) { bt_handle_exception(e); }
+});

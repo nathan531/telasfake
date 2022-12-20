@@ -1,0 +1,37 @@
+
+#secure a {
+    outline: none;
+}
+
+#secure .secure {
+    padding-left: 10px;
+}
+
+#secure .terms, #secure .term-size {
+    font-size: 12px;
+}
+
+#seriously.layer {
+    display: none;
+    z-index:9999;
+    position: absolute;
+    background-color: #FFFFFF;
+    padding: 15px;
+    text-align: left;
+    width: 300px;
+    border: 1px solid #C2C2C2;
+    box-shadow: 0px 0px 20px #000;
+    -moz-box-shadow: 0px 0px 20px #000;
+    -webkit-box-shadow: 0px 0px 20px #000;
+}
+
+.arrow-right {
+    background-image: url(https://secure.netflix.com/us/layout/ecweb/common/arrows.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    position: absolute;
+    z-index: 9999;
+    background-position: -47px 0;
+    height: 60px;
+    width: 52px;
+}
